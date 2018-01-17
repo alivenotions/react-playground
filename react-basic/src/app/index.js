@@ -1,6 +1,9 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 
+// module requires
+const TodoItem = require('./todoItem')
+
 const myCheese = {
     name: 'Camembert',
     smellFactor: 'Extreme Punk',
@@ -64,31 +67,6 @@ class TodoComponent extends React.Component {
         this.setState({
             todos: updatedTodos
         })
-    }
-}
-
-// create TodoItem component
-
-class TodoItem extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.handleDelete = this.handleDelete.bind(this)
-    }
-
-    render() {
-        return (
-            <li>
-                <div className="todo-item">
-                    <span className="item-name" onClick={this.test}>{this.props.item}</span>
-                    <span className="item-delete" onClick={this.handleDelete}> x</span>
-                </div>
-            </li>
-        )        
-    }
-
-    handleDelete() {
-        this.props.onDelete(this.props.item)
     }
 }
 
