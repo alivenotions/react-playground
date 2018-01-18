@@ -1,4 +1,5 @@
 const React = require('react')
+require('./css/todoItem.css')
 
 class TodoItem extends React.Component {
 
