@@ -1,9 +1,25 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 require('./css/index.css')
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 // module requires
 const TodoItem = require('./todoItem')
+const AddItem = require('./addItem')
+const About = require('./about')
+
+class App extends React.Component {
+    render() {
+        return(
+            <BrowserRouter>
+                <Switch>
+                    <Route exact={true} path={'/'} component={TodoComponent} />
+                    <Route path={'/about'} component={About} />
+                </Switch>
+            </BrowserRouter>
+        )
+    }
+}
 
 const myCheese = {
     name: 'Camembert',
@@ -28,6 +44,7 @@ class TodoComponent extends React.Component {
     constructor(props) {
         super(props)
         this.onDelete = this.onDelete.bind(this)
+        this.onAdd = this.onAdd.bind(this)
         this.state = {
             todos: ['Wake up', 'Shake up', 'Pick up keys'],
             age: 22
@@ -56,9 +73,17 @@ class TodoComponent extends React.Component {
                 <p>The busiest people have the most leisure...</p>
                 <p>{this.state.age}</p>
                 <ul>{todos}</ul>
-                <ListComponent todos={this.state.todos} />
+                <AddItem onAdd={this.onAdd}/>
             </div>
         )
+    }
+
+    onAdd(item) {
+        let updatedTodos = this.state.todos
+        updatedTodos.push(item)
+        this.setState({
+            todos: updatedTodos
+        })
     }
 
     onDelete(item) {
@@ -80,7 +105,7 @@ class ListComponent extends React.Component {
 }
 
 // put component into html page
-ReactDOM.render(<TodoComponent />, document.getElementById('todo-wrapper'))
+ReactDOM.render(<App />, document.getElementById('todo-wrapper'))
 
 
 // Read events system documentation
