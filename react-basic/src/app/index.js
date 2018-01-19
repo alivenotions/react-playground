@@ -1,7 +1,7 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 require('./css/index.css')
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Link} from 'react-router-dom'
 
 // module requires
 const TodoItem = require('./todoItem')
@@ -74,6 +74,7 @@ class TodoComponent extends React.Component {
                 <p>{this.state.age}</p>
                 <ul>{todos}</ul>
                 <AddItem onAdd={this.onAdd}/>
+                <Link to='/about'>About</Link>
             </div>
         )
     }
