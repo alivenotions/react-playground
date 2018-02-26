@@ -1,0 +1,21 @@
+Our Dev Environment
+
+Automated Testing: Mocha
+Linting: ESlint
+Minification
+Bundling: Webpack
+JSX compilation
+ES6 transpilation: Babel + Babel polyfills
+
+Versions
+
+React: 15.0.2
+Redux: 3.5.2
+React/Router: 2.4.0
+Webpack: 1.13
+Babel: 6.*
+
+Hot Reloading: babel-preset-react-hmre
+warning: experimental, doesn't reload functional components,
+        doesn't reload container functions like mapStateToProps,
+        other options exist(React hot loader 3.0 currently in alpha)
