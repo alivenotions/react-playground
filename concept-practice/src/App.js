@@ -1,10 +1,16 @@
 import React from 'react'
 
 import Clock from './components/Clock'
+import List from './components/List'
 
 class App extends React.Component {
   render() {
-    return <Clock incrementBy={2}/>
+    return (
+      <div>
+        <Clock incrementBy={2}/>
+        <List />
+      </div>
+    )
   }
 }
 
