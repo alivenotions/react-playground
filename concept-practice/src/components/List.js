@@ -6,21 +6,28 @@ class List extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      natNums: [1, 2, 3, 4]
+      natNums: [
+        {id: 1, num: 1},
+        {id: 2, num: 2},
+        {id: 3, num: 3},
+        {id: 4, num: 4},
+      ]
     }
     this.square = this.square.bind(this)
   }
 
   square() {
     this.setState({
-      natNums: this.state.natNums.map(x => x ** 2)
+      natNums: this.state.natNums.map(
+        nums => Object.assign({}, nums, {num: nums.num ** 2})
+      )
     })
   }
 
   render() {
     const natNumList = this.state.natNums.map(
       // TODO: Understand keys better
-      num => <NatNumList key="tadow" natNum={num} />
+      ({num, id}) => <NatNumList key={id} natNum={num} />
     )
     return (
       <div>
