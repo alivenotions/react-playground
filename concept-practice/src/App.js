@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
       <div>
         {/* <Clock incrementBy={2}/> */}
-        {/* <List /> */}
+        <List />
         <Form />
       </div>
     )

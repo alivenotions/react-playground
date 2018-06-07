@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NatNumList = ({natNum}) => <li>{natNum}</li>
+const NatNumList = (props) => <li>{props.children}</li>
 
 class List extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class List extends React.Component {
       ]
     }
     this.square = this.square.bind(this)
+    this.deleteItem = this.deleteItem.bind(this)
   }
 
   square() {
@@ -24,10 +25,23 @@ class List extends React.Component {
     })
   }
 
+  deleteItem(id, e) {
+    this.setState({
+      natNums: this.state.natNums.filter(
+        nums => nums.id !== id
+      )
+    })
+  }
+
   render() {
     const natNumList = this.state.natNums.map(
-      // TODO: Understand keys better
-      ({num, id}) => <NatNumList key={id} natNum={num} />
+      // keys are identifiers in a particular list
+      // and don't help in reconciliation as such
+      ({num, id}) =>
+        <NatNumList key={id}>
+          num: {num}
+          <button onClick={e => this.deleteItem(id, e)}>delete</button>
+        </NatNumList>
     )
     return (
       <div>
